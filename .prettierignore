@@ -1,0 +1,11 @@
+/build
+/node_modules/
+/.env.local
+/.env.*.local
+/docker-compose.override.yaml
+/yarn-*.log
+/.env
+/.idea/
+.next
+/cypress
+/.lintstagedrc.js
