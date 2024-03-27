@@ -1,3 +1,233 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:storybook/recommended",
+    "plugin:json/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "extraFileExtensions": [".json"],
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "react",
+    "sonarjs",
+    "prettier",
+    "no-relative-import-paths",
+    "simple-import-sort"
+  ],
+  "env": {
+    "browser": true,
+    "es2017": true,
+    "jest": true
+  },
+  "rules": {
+    "import/no-cycle": "error",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "info"]
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "lodash",
+            "message": "Import [module] from lodash/[module] instead"
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["lodash/set"],
+            "message": "Import [module] from lodash/fp/[module] instead"
+          }
+        ]
+      }
+    ],
+    "no-restricted-globals": ["warn", "isNaN"],
+    //"prettier/prettier": "warn",
+    "sonarjs/cognitive-complexity": ["error", 20],
+    // "max-lines-per-function": ["warn", { "max": 40, "IIFEs": false, "skipBlankLines": true, "skipComments": true}],
+    "max-lines-per-function": "off", // too many false positives with react
+    "max-lines": ["error", 1000],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.*",
+          "**/*.stories.*",
+          "**/scripts/*.js",
+          "**/stories/**/*.js",
+          "**/__tests__/**/*.*",
+          "e2e/**/*.*",
+          "e2e/*.*",
+          "**/.storybook/**/*.*"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".jsx", "tsx"]
+      }
+    ],
+    "max-len": [
+      2,
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    // TODO: these rules are off, but should be checked later
+    "no-unsafe-optional-chaining": "error",
+    "react-hooks/exhaustive-deps": "off",
+    // TODO: whenever possible fix and set to warn
+    "react/no-unstable-nested-components": "off",
+    "react/jsx-key": "error",
+    "sonarjs/prefer-single-boolean-return": "error",
+    // TODO: check ignores for no-param-reassign and remove those from the app
+    // TODO: revise sonarjs/cognitive-complexity and max-lines-per-function
+    // TODO: check those after we fix ts-ignore
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    // These rules are OK to be off
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/no-array-index-key": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "import/no-named-as-default": "off",
+    "react/display-name": "off",
+    "consistent-return": "off",
+    "import/prefer-default-export": "off",
+    // The rules below seem to be the same as the defaults
+    "camelcase": [
+      "warn",
+      {
+        "properties": "always"
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@next/next/no-sync-scripts": "warn",
+    "react/jsx-closing-tag-location": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "no-prototype-builtins": "error",
+    "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-undef": "warn",
+    "no-unneeded-ternary": "warn",
+    "array-callback-return": "error",
+    "react/jsx-boolean-value": "warn",
+    "prefer-const": "warn",
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": false,
+        "assignment": false
+      }
+    ],
+    "react/no-this-in-sfc": "warn",
+    "prefer-destructuring": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "jsx-a11y/anchor-has-content": "warn",
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      {
+        "allowSameFolder": true
+      }
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Packages. `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Other components imports.
+          ["^src/"],
+          ["^public"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports.
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.js"],
+      "excludedFiles": ["*.test.js"]
+    },
+    {
+      "files": ["**/**/*.{jsx,tsx}"],
+      "rules": {
+        // should review after getting sonarqube or sonarcloud, because
+        // sonarjs does not handle complexity for react functional component properly
+        "sonarjs/cognitive-complexity": ["error", 30]
+        // "max-lines-per-function": ["warn", { "max": 200, "IIFEs": false, "skipBlankLines": true, "skipComments": true}]
+      }
+    },
+    {
+      "files": ["**/**/Logos/*.{jsx,tsx}"],
+      "rules": {
+        "max-lines-per-function": ["off"]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src"]
+      }
+    }
+  }
 }
