@@ -1,9 +1,5 @@
-const Main = () => (
-  <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-      jeff Roussel Project
-    </div>
-  </main>
-)
+import React from 'react'
 
-export default Main
+const HomePage = () => <h1 className='text-black'>Home page</h1>
+
+export default HomePage
