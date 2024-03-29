@@ -1,7 +1,9 @@
-import React from "react"
 
-const LoginPage = () => (
-        <h1>Login page</h1>
-    )
+import React from 'react'
 
-export default LoginPage
+const Login = () => <h1 className='text-black'>Login page</h1>
+
+export default Login
+
+
+
