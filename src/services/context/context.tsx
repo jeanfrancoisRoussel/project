@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react'
 
-import { initialState } from "./initialState"
+import { initialState } from './initialState'
 
 export const Context = React.createContext(initialState)
 
