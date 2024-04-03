@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { Component } from "react"
+import { Component } from 'react'
 
-import { Context } from "./context"
-import { initialState } from "./initialState"
-import { reducer } from "./reducers"
+import { Context } from './context'
+import { initialState } from './initialState'
+import { reducer } from './reducers'
 
 type ProviderProps = {
   children: React.ReactNode
@@ -18,7 +18,7 @@ export class Provider extends Component<ProviderProps> {
     // eslint-disable-next-line
     dispatch: action => {
       this.setState(state => reducer(state, action))
-    },
+    }
   }
 
   render() {

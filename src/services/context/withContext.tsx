@@ -1,6 +1,6 @@
-import React from "react"
+import React from 'react'
 
-import { Consumer } from "./consumer"
+import { Consumer } from './consumer'
 
 /* @ts-expect-error TS7006 */
 const withContext = WrappedComponent => props => (

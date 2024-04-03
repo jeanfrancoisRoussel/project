@@ -5,14 +5,12 @@ import { Inter } from 'next/font/google'
 // eslint-disable-next-line import/order
 import Providers from './providers'
 
-
 import './globals.css'
 
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import NavbarComponent from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,11 +22,10 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode
 }>) => (
-
   <html lang='en'>
     <body className={inter.className}>
       <Providers>
-        <Navbar />
+        <NavbarComponent />
         {children}
         <Footer />
       </Providers>
