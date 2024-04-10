@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/button-has-type */
+
 'use client'
 
 import { useState } from 'react'
@@ -17,7 +19,7 @@ const SignIn = () => {
     try {
       const res = await signInWithEmailAndPassword(email, password)
       console.log({ res })
-      sessionStorage.setItem('user', "true")
+      sessionStorage.setItem('user', 'true')
       setEmail('')
       setPassword('')
       router.push('/')

@@ -1,5 +1,9 @@
 import React from 'react'
 
-const Footer = () => <h1 className='text-black'>Footer page</h1>
+const Footer = () => (
+  <footer className='sticky top-[100vh] mb-10 text-center'>
+    Mauritius project@2024
+  </footer>
+)
 
 export default Footer

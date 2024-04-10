@@ -3,8 +3,8 @@
 import React from 'react'
 
 const HomePage = () => (
-  <div>
-    <h1 className='text-black'>Home page</h1>
+  <div className='flex h-screen'>
+    <h1>Home page</h1>
   </div>
 )
 
