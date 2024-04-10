@@ -5,57 +5,57 @@
 
 'use client'
 
-import { useState } from 'react';
-import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
+import { useState } from 'react'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 
-import {auth} from '@/app/firebase/config'
+import { auth } from '@/app/firebase/config'
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth)
 
   const handleSignUp = async () => {
     try {
-        const res = await createUserWithEmailAndPassword(email, password)
-        console.log({res})
-        
-        sessionStorage.setItem('user', "true")
-        setEmail('');
-        setPassword('')
+      const res = await createUserWithEmailAndPassword(email, password)
+      console.log({ res })
 
-    } catch(e){
-        console.error(e)
+      sessionStorage.setItem('user', 'true')
+      setEmail('')
+      setPassword('')
+    } catch (e) {
+      console.error(e)
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-gray-800 p-10 rounded-lg shadow-xl w-96">
-        <h1 className="text-white text-2xl mb-5">Sign Up</h1>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-black placeholder-gray-500"
+    <div className='flex min-h-screen items-center justify-center bg-gray-900'>
+      <div className='w-96 rounded-lg bg-gray-800 p-10 shadow-xl'>
+        <h1 className='mb-5 text-2xl text-white'>Sign Up</h1>
+        <input
+          type='email'
+          placeholder='Email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className='mb-4 w-full rounded bg-gray-700 p-3 text-black placeholder-gray-500 outline-none'
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          className="w-full p-3 mb-4 bg-gray-700 rounded outline-none text-black placeholder-gray-500"
+        <input
+          type='password'
+          placeholder='Password'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          className='mb-4 w-full rounded bg-gray-700 p-3 text-black placeholder-gray-500 outline-none'
         />
-        <button 
+        <button
           onClick={handleSignUp}
-          className="w-full p-3 bg-indigo-600 rounded text-black hover:bg-indigo-500"
+          className='w-full rounded bg-indigo-600 p-3 text-black hover:bg-indigo-500'
         >
           Sign Up
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp
