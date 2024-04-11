@@ -13,6 +13,7 @@ import {
   navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu'
 import { cn } from '@/lib/utils'
+import ModeToggle from '../modeToggle'
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -134,6 +135,7 @@ export const NavBar = () => (
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <ModeToggle />
       </NavigationMenuList>
     </NavigationMenu>
   </div>
